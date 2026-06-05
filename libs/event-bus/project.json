@@ -1,0 +1,9 @@
+{
+  "name": "event-bus",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/event-bus/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project event-bus --web",
+  "targets": {}
+}

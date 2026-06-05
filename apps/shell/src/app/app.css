@@ -1,0 +1,124 @@
+.shell-layout {
+  min-height: 100vh;
+  padding: 32px;
+  background: linear-gradient(180deg, #f5f7fb 0%, #eef3ff 100%);
+  color: #0f172a;
+}
+
+.shell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 32px;
+}
+
+.shell-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.shell-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.shell-copy {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.shell-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.shell-nav__link {
+  padding: 10px 14px;
+  border: 1px solid #dbe4f0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.shell-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.shell-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.shell-grid--remotes {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.shell-inline-link {
+  display: inline-flex;
+  margin-top: 16px;
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.shell-card__caption {
+  font-size: 14px;
+  color: #475569;
+}
+
+.shell-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.shell-meta div {
+  padding: 14px;
+  border-radius: 16px;
+  background: #eef4ff;
+}
+
+.shell-meta dt {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.shell-meta dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shell-fallback {
+  padding: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #475569;
+}
+
+@media (max-width: 800px) {
+  .shell-layout {
+    padding: 20px;
+  }
+
+  .shell-header {
+    flex-direction: column;
+  }
+}
