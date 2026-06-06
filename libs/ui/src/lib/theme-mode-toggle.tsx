@@ -107,7 +107,7 @@ function ThemeSelectorDialog({ trigger }: { trigger: React.ReactNode }) {
         <div className="space-y-5 px-1 pb-1">
           <div className="space-y-3">
             <p className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">
-              Appearance teste
+              Appearance
             </p>
 
             <div className="space-y-2">

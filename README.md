@@ -137,7 +137,7 @@ Use o event bus quando:
 - a mensagem for efêmera
 - a interação precisar continuar desacoplada do estado de domínio
 
-Não use o event bus quando:
+Não devemos usar o event bus quando:
 
 - o dado for estado persistente da aplicação
 - a preocupação pertencer a auth/sessão
@@ -151,7 +151,7 @@ Nx não é apenas scaffolding neste repositório. Ele faz parte da demonstraçã
 - cada app e cada lib compartilhada possuem targets isolados de `lint` e `test`
 - cada app possui target isolado de `build`
 - `nx affected` consegue escopar o trabalho para apps/libs alterados
-- o project graph torna shell, remotes e libs compartilhadas fáceis de explicar em entrevista
+- o project graph torna shell, remotes e libs compartilhadas fáceis
 - a pipeline de CI consegue validar apenas as partes impactadas do workspace, sem perder smoke builds isolados por remote
 
 ## Como Começar
@@ -311,18 +311,17 @@ Depois da geração:
 
 - Microfrontends adicionam overhead operacional em comparação a uma SPA única.
 - Dependências compartilhadas precisam ser bem cuidadas para evitar drift de versão.
-- Um shell pode ficar inchado se começar a absorver regras de domínio.
-- Comunicação orientada a eventos é flexível, mas precisa de disciplina para não virar acoplamento escondido.
-- Para um time pequeno entregando um único produto coeso, um monólito modular pode ser mais simples.
+- Shell pode ficar inchado se começar a absorver regras de domínio.
+- Comunicação orientada a eventos é flexível, mas precisa de disciplina para não virar acoplamento escondido (deve-se decidir padrão entre times de desenvolvimento).
+- Para um time pequeno entregando um único produto coeso, um monólito modular pode ser mais simples (e continua sendo a melhor escolha).
 
-## Próximos Passos
+## Próximos passos que faria
 
 - Adicionar manifests reais de deploy de remotes por ambiente
 - Adicionar testes de contrato em torno dos remote entrypoints
 - Adicionar cobertura e2e para shell + navegação federada
 - Adicionar telemetria de saúde dos remotes e instrumentação de retry
 - Substituir os endpoints mock por uma camada real de integração com backend
-- Capturar screenshots e demos animadas finais para o repositório e para um post no LinkedIn
 
 ## Screenshots
 
