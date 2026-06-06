@@ -6,6 +6,10 @@ const config: ModuleFederationConfig = {
     './Routes': './src/remote-entry.ts',
   },
   shared: (libraryName, sharedConfig) => {
+    if (libraryName.startsWith('@radix-ui/')) {
+      return false;
+    }
+
     if (!libraryName.startsWith('@modular-payments-console/')) {
       return sharedConfig;
     }

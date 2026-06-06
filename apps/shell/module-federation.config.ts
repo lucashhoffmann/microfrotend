@@ -16,6 +16,10 @@ const config: ModuleFederationConfig = {
    */
   remotes: ['billing', 'wallet', 'analytics', 'auth'],
   shared: (libraryName, sharedConfig) => {
+    if (libraryName.startsWith('@radix-ui/')) {
+      return false;
+    }
+
     if (!libraryName.startsWith('@modular-payments-console/')) {
       return sharedConfig;
     }

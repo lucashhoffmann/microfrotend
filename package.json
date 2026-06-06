@@ -4,6 +4,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "node tools/scripts/dev.mjs",
+    "kill:dev-ports": "for p in 3333 4200 4201 4202 4203 4205; do pids=$(lsof -ti tcp:$p 2>/dev/null); if [ -n \"$pids\" ]; then kill $pids 2>/dev/null || true; fi; done; sleep 1",
+    "reset:workspace": "pnpm nx reset && rm -rf node_modules/.cache .nx/cache .nx/workspace-data dist",
+    "dev:clean": "pnpm run kill:dev-ports && pnpm run reset:workspace && pnpm dev",
     "dev:shell": "pnpm nx serve shell",
     "mock:api": "node tools/mock-api/server.mjs",
     "build": "nx run-many -t build --projects=shell,auth,billing,wallet,analytics",
