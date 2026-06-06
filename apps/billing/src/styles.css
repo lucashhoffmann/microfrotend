@@ -1,13 +1,1 @@
-:root {
-  font-family: 'Avenir Next', 'Segoe UI', sans-serif;
-  color: #0f172a;
-  background-color: #f5f7fb;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
+@import '../../../libs/ui/src/styles.css';

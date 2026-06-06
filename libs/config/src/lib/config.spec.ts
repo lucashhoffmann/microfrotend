@@ -1,19 +1,27 @@
 import {
-  API_CONFIG,
+  API_BASE_URL,
   APP_NAME,
-  REMOTE_NAVIGATION,
-  SHELL_NAVIGATION,
+  AUTH_ROUTES,
+  PRIVATE_HOME_ROUTE,
+  REMOTE_ROUTE_META,
+  SHELL_NAV_GROUPS,
 } from './config';
 
 describe('config', () => {
   it('exports the shell and remote navigation defaults', () => {
     expect(APP_NAME).toBe('modular-payments-console');
-    expect(API_CONFIG.baseUrl).toBe('/api');
-    expect(REMOTE_NAVIGATION.map((remote) => remote.id)).toEqual([
+    expect(API_BASE_URL).toBe('http://localhost:3333/api');
+    expect(REMOTE_ROUTE_META.billing.sections.map((section) => section.id)).toEqual([
+      'overview',
+      'charges',
+      'plans',
+    ]);
+    expect(SHELL_NAV_GROUPS[0].items.map((item) => item.id)).toEqual([
       'billing',
       'wallet',
       'analytics',
     ]);
-    expect(SHELL_NAVIGATION[0].path).toBe('/');
+    expect(AUTH_ROUTES.login).toBe('/auth/login');
+    expect(PRIVATE_HOME_ROUTE).toBe('/billing/overview');
   });
 });

@@ -1,11 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { Card } from './card';
+import { Card, CardContent, CardHeader, CardTitle } from './card';
 
 describe('Card', () => {
   it('renders title and content', () => {
     render(
-      <Card eyebrow="Shared UI" title="Example card">
-        <p>Rendered from the ui library.</p>
+      <Card>
+        <CardHeader>
+          <CardTitle>Example card</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>Rendered from the ui library.</p>
+        </CardContent>
       </Card>,
     );
 

@@ -1,14 +1,17 @@
 import { render, screen } from '@testing-library/react';
-
 import App from './app';
 
-describe('App', () => {
-  it('renders the analytics placeholder', () => {
+describe('Analytics App', () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    window.history.pushState({}, 'Analytics', '/analytics/overview');
+  });
+
+  it('renders the overview route in standalone mode', async () => {
     render(<App />);
 
-    expect(screen.getByText(/analytics remote loaded/i)).toBeTruthy();
     expect(
-      screen.getByText(/future analytics dashboards and reporting contracts/i),
+      await screen.findByRole('heading', { name: /analytics insight center/i }),
     ).toBeTruthy();
   });
 });

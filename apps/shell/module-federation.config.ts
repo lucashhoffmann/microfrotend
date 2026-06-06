@@ -14,7 +14,19 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['billing', 'wallet', 'analytics'],
+  remotes: ['billing', 'wallet', 'analytics', 'auth'],
+  shared: (libraryName, sharedConfig) => {
+    if (!libraryName.startsWith('@modular-payments-console/')) {
+      return sharedConfig;
+    }
+
+    return {
+      ...sharedConfig,
+      singleton: true,
+      strictVersion: false,
+      requiredVersion: false,
+    };
+  },
 };
 
 /**

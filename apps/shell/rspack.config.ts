@@ -15,6 +15,9 @@ export default {
   },
   devServer: {
     port: 4200,
+    client: {
+      overlay: false,
+    },
     historyApiFallback: {
       index: '/index.html',
       disableDotRule: true,

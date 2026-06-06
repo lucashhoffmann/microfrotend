@@ -1,14 +1,17 @@
 import { render, screen } from '@testing-library/react';
-
 import App from './app';
 
-describe('App', () => {
-  it('renders the wallet placeholder', () => {
+describe('Wallet App', () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    window.history.pushState({}, 'Wallet', '/wallet/overview');
+  });
+
+  it('renders the overview route in standalone mode', async () => {
     render(<App />);
 
-    expect(screen.getByText(/wallet remote loaded/i)).toBeTruthy();
     expect(
-      screen.getByText(/future wallet experiences and integration rules/i),
+      await screen.findByRole('heading', { name: /wallet operations hub/i }),
     ).toBeTruthy();
   });
 });

@@ -5,6 +5,18 @@ const config: ModuleFederationConfig = {
   exposes: {
     './Routes': './src/remote-entry.ts',
   },
+  shared: (libraryName, sharedConfig) => {
+    if (!libraryName.startsWith('@modular-payments-console/')) {
+      return sharedConfig;
+    }
+
+    return {
+      ...sharedConfig,
+      singleton: true,
+      strictVersion: false,
+      requiredVersion: false,
+    };
+  },
 };
 
 /**

@@ -8,8 +8,7 @@
     "serve": {
       "options": {
         "port": 4203
-      },
-      "dependsOn": ["shell:serve"]
+      }
     }
   }
 }

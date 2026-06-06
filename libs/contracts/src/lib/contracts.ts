@@ -1,17 +1,89 @@
 export type RemoteId = 'billing' | 'wallet' | 'analytics';
 
-export type AppShellRouteId = 'home' | RemoteId;
+export type ThemeMode = 'light' | 'dark' | 'system';
 
 export type AppEventMap = Record<string, unknown>;
 
-export interface AppRouteDefinition<TId extends string = string> {
-  id: TId;
-  label: string;
-  path: string;
-  description?: string;
+export type ActivityStatus =
+  | 'ready'
+  | 'queued'
+  | 'in-progress'
+  | 'complete'
+  | 'attention';
+
+export interface LoginInput {
+  email: string;
+  password: string;
 }
 
-export interface RemoteDefinition extends AppRouteDefinition<RemoteId> {
-  headline: string;
+export interface RegisterInput {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface AuthSession {
+  token: string;
+  user: AuthUser;
+}
+
+export interface DashboardStatCard {
+  id: string;
+  title: string;
+  value: string;
+  helper: string;
+}
+
+export interface DashboardActivityItem {
+  id: string;
+  title: string;
   summary: string;
+  status: ActivityStatus;
+}
+
+export interface RemoteDashboardResponse {
+  remoteId: RemoteId;
+  title: string;
+  description: string;
+  stats: DashboardStatCard[];
+  activity: DashboardActivityItem[];
+}
+
+export interface RemoteRouteSection {
+  id: string;
+  label: string;
+  path: string;
+  description: string;
+}
+
+export interface RemoteRouteMeta {
+  id: RemoteId;
+  label: string;
+  basePath: string;
+  defaultPath: string;
+  dashboardPath: string;
+  description: string;
+  headline: string;
+  sections: RemoteRouteSection[];
+}
+
+export interface ShellNavItem {
+  id: string;
+  label: string;
+  path: string;
+  iconKey: 'receipt-text' | 'wallet' | 'chart-column';
+  description: string;
+  remoteId?: RemoteId;
+}
+
+export interface ShellNavGroup {
+  id: string;
+  label: string;
+  items: ShellNavItem[];
 }

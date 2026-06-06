@@ -1,0 +1,140 @@
+{
+  "$schema": "../../node_modules/json-server/schema.json",
+  "users": [
+    {
+      "id": "user_demo",
+      "name": "Demo Operator",
+      "email": "demo@modular-payments.local",
+      "password": "Password123!"
+    },
+    {
+      "id": "user_1780705416289",
+      "name": "Alex Operator",
+      "email": "alex.1780705416141@modular-payments.local",
+      "password": "Password123!"
+    },
+    {
+      "id": "user_1780707499382",
+      "name": "Alex",
+      "email": "teste@email.com",
+      "password": "Password1"
+    }
+  ],
+  "billingDashboard": {
+    "remoteId": "billing",
+    "title": "Billing overview",
+    "description": "Monitor placeholder charging flows, plan snapshots and recent collection activity.",
+    "stats": [
+      {
+        "id": "open-invoices",
+        "title": "Open invoices",
+        "value": "128",
+        "helper": "14 due this week"
+      },
+      {
+        "id": "mrr",
+        "title": "Projected MRR",
+        "value": "$42.8k",
+        "helper": "Stable from last cycle"
+      },
+      {
+        "id": "recovery",
+        "title": "Recovery rate",
+        "value": "91%",
+        "helper": "Mock trend +4%"
+      }
+    ],
+    "activity": [
+      {
+        "id": "billing-1",
+        "title": "Card retry campaign",
+        "summary": "Retry sequence scheduled for 12 high-risk subscriptions.",
+        "status": "in-progress"
+      },
+      {
+        "id": "billing-2",
+        "title": "Plan migration review",
+        "summary": "Placeholder queue for upcoming enterprise plan adjustments.",
+        "status": "queued"
+      }
+    ]
+  },
+  "walletDashboard": {
+    "remoteId": "wallet",
+    "title": "Wallet overview",
+    "description": "Track internal balances, payout requests and treasury placeholders.",
+    "stats": [
+      {
+        "id": "available-balance",
+        "title": "Available balance",
+        "value": "$18.4k",
+        "helper": "Mock balance visible for demo"
+      },
+      {
+        "id": "pending-payouts",
+        "title": "Pending payouts",
+        "value": "9",
+        "helper": "Next batch today"
+      },
+      {
+        "id": "transfer-volume",
+        "title": "Transfer volume",
+        "value": "$76k",
+        "helper": "Placeholder month-to-date"
+      }
+    ],
+    "activity": [
+      {
+        "id": "wallet-1",
+        "title": "Treasury sync",
+        "summary": "Wallet placeholder sync completed across internal ledgers.",
+        "status": "complete"
+      },
+      {
+        "id": "wallet-2",
+        "title": "Manual review batch",
+        "summary": "Three payout requests waiting for a demo approval flow.",
+        "status": "attention"
+      }
+    ]
+  },
+  "analyticsDashboard": {
+    "remoteId": "analytics",
+    "title": "Analytics overview",
+    "description": "Validate charts, reporting contracts and product observability placeholders.",
+    "stats": [
+      {
+        "id": "active-reports",
+        "title": "Active reports",
+        "value": "24",
+        "helper": "5 shared with stakeholders"
+      },
+      {
+        "id": "events-ingested",
+        "title": "Events ingested",
+        "value": "1.8M",
+        "helper": "Mock rolling 7 days"
+      },
+      {
+        "id": "insight-score",
+        "title": "Insight score",
+        "value": "84",
+        "helper": "Placeholder health indicator"
+      }
+    ],
+    "activity": [
+      {
+        "id": "analytics-1",
+        "title": "Executive digest",
+        "summary": "A curated reporting pack is ready for the next review.",
+        "status": "ready"
+      },
+      {
+        "id": "analytics-2",
+        "title": "Attribution audit",
+        "summary": "Placeholder data quality check flagged two dimensions.",
+        "status": "attention"
+      }
+    ]
+  }
+}

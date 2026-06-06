@@ -1,14 +1,17 @@
 import { render, screen } from '@testing-library/react';
-
 import App from './app';
 
-describe('App', () => {
-  it('renders the billing placeholder', () => {
+describe('Billing App', () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    window.history.pushState({}, 'Billing', '/billing/overview');
+  });
+
+  it('renders the overview route in standalone mode', async () => {
     render(<App />);
 
-    expect(screen.getByText(/billing remote loaded/i)).toBeTruthy();
     expect(
-      screen.getByText(/future billing flows and internal patterns/i),
+      await screen.findByRole('heading', { name: /billing command center/i }),
     ).toBeTruthy();
   });
 });
