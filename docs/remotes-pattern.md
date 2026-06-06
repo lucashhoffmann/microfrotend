@@ -1,9 +1,5 @@
 # Pattern Frontend
 
-Este documento descreve a estrutura de pastas e os padroes de organizacao
-usados hoje no `mensalizee-frontend`, seguindo a ideia do exemplo em
-`vexpenses-frontend/docs`, mas adaptado ao formato real deste projeto.
-
 ## Estrutura geral
 
 O projeto esta dividido em tres camadas principais dentro de `src`:

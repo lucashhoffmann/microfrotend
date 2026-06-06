@@ -13,6 +13,77 @@ Este projeto existe para mostrar como uma plataforma frontend pode:
 - compartilhar apenas bibliotecas transversais estáveis, como UI, contratos, helpers de auth, config, API client e event bus
 - funcionar bem com pipelines `affected` do Nx, exploração local do graph e validação de CI por time
 
+## Visão Arquitetural
+
+```mermaid
+flowchart LR
+  subgraph Shell["Shell / Host"]
+    Router["Route orchestration"]
+    Layout["Global layout"]
+    Session["Auth bootstrap"]
+    Providers["Theme + Query providers"]
+    Header["Shell header"]
+  end
+
+  subgraph Remotes["Federated Remotes"]
+    Auth["auth"]
+    Billing["billing"]
+    Wallet["wallet"]
+    Analytics["analytics"]
+  end
+
+  subgraph Shared["Shared Libraries"]
+    UI["ui"]
+    Contracts["contracts"]
+    AuthLib["auth"]
+    ApiClient["api-client"]
+    Bus["event-bus"]
+    Config["config"]
+  end
+
+  subgraph Runtime["Runtime / Ops"]
+    Mock["mock API"]
+    CI["Nx affected + CI"]
+  end
+
+  Router --> Auth
+  Router --> Billing
+  Router --> Wallet
+  Router --> Analytics
+
+  Layout --> Header
+  Session --> AuthLib
+  Providers --> UI
+
+  Auth --> Contracts
+  Billing --> Contracts
+  Wallet --> Contracts
+  Analytics --> Contracts
+
+  Auth --> ApiClient
+  Billing --> ApiClient
+  Wallet --> ApiClient
+  Analytics --> ApiClient
+
+  Billing --> Bus
+  Wallet --> Bus
+  Analytics --> Bus
+  Header --> Bus
+
+  Shell --> Config
+  Auth --> Config
+  Billing --> Config
+  Wallet --> Config
+  Analytics --> Config
+
+  ApiClient --> Mock
+  CI --> Shell
+  CI --> Remotes
+  CI --> Shared
+```
+
+Em termos práticos, o `shell` orquestra autenticação, layout, providers e composição dos remotes; os remotes ficam donos do seu roteamento e das telas de domínio; e as libs compartilhadas concentram apenas contratos e capacidades transversais estáveis.
+
 ## Stack
 
 - `Nx 22`
