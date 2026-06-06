@@ -1,6 +1,7 @@
 export type RemoteId = 'billing' | 'wallet' | 'analytics';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
+export type ColorTheme = 'default' | 'violet' | 'red' | 'green' | 'blue';
 
 export type AppEventMap = Record<string, unknown>;
 

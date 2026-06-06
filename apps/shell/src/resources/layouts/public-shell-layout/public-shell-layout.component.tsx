@@ -2,60 +2,78 @@ import { PropsWithChildren } from 'react';
 import { APP_NAME, APP_TITLE, DEMO_CREDENTIALS } from '@modular-payments-console/config';
 import {
   Badge,
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+  ThemeModeToggle,
 } from '@modular-payments-console/ui';
 
 export function PublicShellLayout({ children }: PropsWithChildren) {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-background to-accent/30 px-6 py-10">
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <section className="flex flex-col justify-between rounded-[2rem] border border-border/70 bg-card/70 p-8 shadow-sm backdrop-blur">
-          <div className="space-y-6">
-            <Badge variant="soft" className="w-fit">
-              {APP_NAME}
-            </Badge>
-            <div className="space-y-4">
-              <h1 className="max-w-xl text-4xl leading-tight font-semibold tracking-tight text-balance">
-                {APP_TITLE}
+    <main className="min-h-svh bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <div className="flex min-h-svh w-full flex-col md:flex-row">
+        <aside className="hidden w-full border-r border-zinc-300 bg-zinc-200/45 p-12 md:flex md:w-[48%] md:flex-col md:justify-between dark:border-zinc-800 dark:bg-zinc-900/35">
+          <div className="space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="bg-primary text-primary-foreground flex size-12 items-center justify-center rounded-md text-sm font-semibold tracking-[0.2em]">
+                MPC
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold tracking-[0.18em] text-zinc-500 uppercase dark:text-zinc-400">
+                  {APP_NAME}
+                </p>
+                <p className="text-sm font-medium">{APP_TITLE}</p>
+              </div>
+            </div>
+
+            <div className="max-w-md space-y-4">
+              <Badge variant="soft" className="w-fit rounded-md bg-white/70 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+                Enterprise microfrontend workspace
+              </Badge>
+              <h1 className="text-4xl leading-tight font-semibold tracking-tight text-balance">
+                Operate billing, wallet and analytics from one authenticated shell.
               </h1>
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-                A shell-first enterprise microfrontend workspace, prepared to
-                demonstrate authenticated composition, shared UI, isolated
-                remotes and server-state orchestration.
+              <p className="text-base leading-7 text-zinc-600 dark:text-zinc-400">
+                A structured host for federated remotes with shared theme, shared auth
+                and consistent orchestration across product surfaces.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card className="border-border/70 bg-background/70">
-              <CardHeader>
-                <CardTitle className="text-lg">Public auth flow</CardTitle>
-                <CardDescription>
-                  The login and register views live inside a dedicated remote mounted at
-                  <code className="ml-1 rounded bg-accent px-1.5 py-0.5 text-xs">
-                    /auth/*
-                  </code>
-                  .
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="border-border/70 bg-background/70">
-              <CardHeader>
-                <CardTitle className="text-lg">Demo credentials</CardTitle>
-                <CardDescription>
-                  Email: <strong>{DEMO_CREDENTIALS.email}</strong>
-                  <br />
-                  Password: <strong>{DEMO_CREDENTIALS.password}</strong>
-                </CardDescription>
-              </CardHeader>
-            </Card>
+          <div className="grid gap-6 text-sm text-zinc-600 dark:text-zinc-400">
+            <div className="space-y-2 border-t border-zinc-300 pt-6 dark:border-zinc-800">
+              <p className="font-medium text-zinc-900 dark:text-zinc-100">
+                Demo access
+              </p>
+              <p>{DEMO_CREDENTIALS.email}</p>
+              <p>{DEMO_CREDENTIALS.password}</p>
+            </div>
+            <p className="max-w-sm">
+              The auth remote protects the shell and keeps the business remotes
+              isolated behind a shared session contract.
+            </p>
+          </div>
+        </aside>
+
+        <section className="relative flex min-w-0 flex-1 bg-zinc-50 dark:bg-zinc-950">
+          <div className="absolute top-4 right-4 z-10 md:top-6 md:right-6">
+            <ThemeModeToggle />
+          </div>
+
+          <div className="flex min-h-svh w-full items-center justify-center p-5 md:p-10">
+            <div className="w-full max-w-[28.75rem] border border-zinc-300 bg-white p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="mb-8 flex items-center gap-3 md:hidden">
+                <div className="bg-primary text-primary-foreground flex size-11 items-center justify-center rounded-md text-sm font-semibold tracking-[0.2em]">
+                  MPC
+                </div>
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+                    {APP_NAME}
+                  </p>
+                  <p className="text-sm font-medium">{APP_TITLE}</p>
+                </div>
+              </div>
+              {children}
+            </div>
           </div>
         </section>
-
-        <section className="flex items-center justify-center">{children}</section>
       </div>
     </main>
   );

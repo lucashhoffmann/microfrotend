@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@modular-payments-console/ui';
+import { CardDescription, CardTitle } from '@modular-payments-console/ui';
 
 interface AuthPageProps extends PropsWithChildren {
   title: string;
@@ -19,22 +19,27 @@ export function AuthPage({
   children,
 }: AuthPageProps) {
   return (
-    <Card className="w-full max-w-xl border-border/70 bg-card/95 shadow-xl backdrop-blur">
-      <CardHeader className="space-y-3">
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        <CardDescription className="text-sm leading-6">
+    <div className="space-y-6">
+      <header className="space-y-3">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+            Shell access
+          </p>
+          <CardTitle className="text-3xl leading-tight">{title}</CardTitle>
+        </div>
+        <CardDescription className="max-w-md text-sm leading-6">
           {description}
         </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {children}
-        <div className="text-sm text-muted-foreground">
-          {alternatePrompt}{' '}
-          <Link className="font-semibold text-primary" to={alternatePath}>
-            {alternateLabel}
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
+      </header>
+
+      {children}
+
+      <div className="border-t border-border pt-4 text-sm text-muted-foreground">
+        {alternatePrompt}{' '}
+        <Link className="font-semibold text-foreground underline-offset-4 hover:underline" to={alternatePath}>
+          {alternateLabel}
+        </Link>
+      </div>
+    </div>
   );
 }

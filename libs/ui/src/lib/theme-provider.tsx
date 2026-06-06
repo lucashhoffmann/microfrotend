@@ -6,13 +6,19 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { THEME_STORAGE_KEY } from '@modular-payments-console/config';
-import { ThemeMode } from '@modular-payments-console/contracts';
+import {
+  THEME_COLOR_STORAGE_KEY,
+  THEME_STORAGE_KEY,
+} from '@modular-payments-console/config';
+import { ColorTheme, ThemeMode } from '@modular-payments-console/contracts';
 
 interface ThemeContextValue {
   theme: ThemeMode;
   resolvedTheme: 'light' | 'dark';
+  colorTheme: ColorTheme;
+  isDark: boolean;
   setTheme: (theme: ThemeMode) => void;
+  setColorTheme: (colorTheme: ColorTheme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -69,6 +75,26 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 
     return 'system';
   });
+  const [colorTheme, setColorThemeState] = useState<ColorTheme>(() => {
+    const storage = getThemeStorage();
+
+    if (!storage) {
+      return 'default';
+    }
+
+    const storedTheme = storage.getItem(THEME_COLOR_STORAGE_KEY);
+    if (
+      storedTheme === 'default' ||
+      storedTheme === 'violet' ||
+      storedTheme === 'red' ||
+      storedTheme === 'green' ||
+      storedTheme === 'blue'
+    ) {
+      return storedTheme;
+    }
+
+    return 'default';
+  });
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(() =>
     getSystemTheme(),
   );
@@ -94,6 +120,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   }, []);
 
   const resolvedTheme = theme === 'system' ? systemTheme : theme;
+  const isDark = resolvedTheme === 'dark';
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -101,16 +128,33 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     root.classList.add(resolvedTheme);
   }, [resolvedTheme]);
 
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    if (colorTheme === 'default') {
+      root.removeAttribute('data-color-theme');
+      return;
+    }
+
+    root.setAttribute('data-color-theme', colorTheme);
+  }, [colorTheme]);
+
   const value = useMemo(
     () => ({
       theme,
       resolvedTheme,
+      colorTheme,
+      isDark,
       setTheme: (nextTheme: ThemeMode) => {
         getThemeStorage()?.setItem(THEME_STORAGE_KEY, nextTheme);
         setThemeState(nextTheme);
       },
+      setColorTheme: (nextColorTheme: ColorTheme) => {
+        getThemeStorage()?.setItem(THEME_COLOR_STORAGE_KEY, nextColorTheme);
+        setColorThemeState(nextColorTheme);
+      },
     }),
-    [resolvedTheme, theme],
+    [colorTheme, isDark, resolvedTheme, theme],
   );
 
   return (

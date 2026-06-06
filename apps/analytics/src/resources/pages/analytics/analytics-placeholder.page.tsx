@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  getRemoteBadgeVariant,
 } from '@modular-payments-console/ui';
 import { AnalyticsSectionNav } from './components/analytics-section-nav.component';
 
@@ -18,9 +19,9 @@ export function AnalyticsPlaceholderPage({
   const section = remote.sections.find(currentSection => currentSection.id === sectionId);
 
   return (
-    <section className="space-y-6">
+    <section className="min-w-0 space-y-6">
       <header className="space-y-3">
-        <Badge variant="soft">{remote.label}</Badge>
+        <Badge variant={getRemoteBadgeVariant(remote.id)}>{remote.label}</Badge>
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight">
             {section?.label ?? remote.label}
@@ -32,8 +33,8 @@ export function AnalyticsPlaceholderPage({
         <AnalyticsSectionNav />
       </header>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card className="border-border/70">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+        <Card className="min-w-0 border-border/70">
           <CardHeader>
             <CardTitle>Placeholder surface</CardTitle>
             <CardDescription>
@@ -53,7 +54,7 @@ export function AnalyticsPlaceholderPage({
           </CardContent>
         </Card>
 
-        <Card className="border-border/70 bg-accent/40">
+        <Card className="min-w-0 border-border/70 bg-accent/40">
           <CardHeader>
             <CardTitle>Future expansion area</CardTitle>
             <CardDescription>

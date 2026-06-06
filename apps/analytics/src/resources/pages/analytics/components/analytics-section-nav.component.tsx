@@ -10,7 +10,7 @@ export function AnalyticsSectionNav() {
           key={section.id}
           className={({ isActive }) =>
             cn(
-              'rounded-full border border-border/70 px-4 py-2 text-sm font-medium transition-colors',
+              'rounded-md border border-border/60 px-4 py-2 text-sm font-medium transition-colors',
               isActive
                 ? 'bg-primary text-primary-foreground'
                 : 'bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground',

@@ -51,52 +51,59 @@ export function RegisterView() {
   });
 
   return (
-    <Form {...form}>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Alex Operator" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="operator@company.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="At least 8 characters" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <div className="space-y-5">
+      <Form {...form}>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Alex Operator" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="operator@company.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" placeholder="At least 8 characters" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <Button className="w-full" disabled={register.isPending} type="submit">
-          {register.isPending ? 'Creating account...' : 'Create account'}
-        </Button>
-      </form>
-    </Form>
+          <Button className="mt-2 w-full" disabled={register.isPending} type="submit">
+            {register.isPending ? 'Creating account...' : 'Create account'}
+          </Button>
+        </form>
+      </Form>
+
+      <p className="border-t border-border pt-4 text-sm leading-6 text-muted-foreground">
+        Registration remains intentionally simple here so the shell flow can be
+        validated before domain-specific onboarding rules are introduced.
+      </p>
+    </div>
   );
 }

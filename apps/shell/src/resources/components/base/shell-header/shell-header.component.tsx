@@ -3,16 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@modular-payments-console/auth';
 import { AUTH_ROUTES } from '@modular-payments-console/config';
 import {
-  Avatar,
-  AvatarFallback,
   Button,
+  Separator,
   SidebarTrigger,
   ThemeModeToggle,
 } from '@modular-payments-console/ui';
 
 export function ShellHeader() {
   const navigate = useNavigate();
-  const user = useAuthStore(state => state.session?.user ?? null);
   const logout = useAuthStore(state => state.logout);
 
   const handleLogout = () => {
@@ -21,40 +19,28 @@ export function ShellHeader() {
   };
 
   return (
-    <header className="border-b border-border/70 bg-background/80 px-4 py-3 backdrop-blur">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <SidebarTrigger />
-          <div>
-            <p className="text-sm font-semibold">Secure shell workspace</p>
-            <p className="text-xs text-muted-foreground">
-              Shared theme, shared cache and federated remotes orchestrated in one host.
-            </p>
-          </div>
-        </div>
+    <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-4 backdrop-blur">
+      <SidebarTrigger className="-ml-1" />
+      <Separator orientation="vertical" className="mr-2 h-4" />
 
-        <div className="flex items-center gap-2">
-          <ThemeModeToggle />
-          <div className="hidden items-center gap-2 rounded-full border border-border/70 bg-card px-3 py-1.5 sm:flex">
-            <Avatar className="size-8">
-              <AvatarFallback>
-                {user?.name?.charAt(0)?.toUpperCase() ?? 'D'}
-              </AvatarFallback>
-            </Avatar>
-            <div className="text-left">
-              <p className="text-sm font-medium leading-none">
-                {user?.name ?? 'Demo Operator'}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {user?.email ?? 'demo@modular-payments.local'}
-              </p>
-            </div>
-          </div>
-          <Button variant="outline" size="sm" onClick={handleLogout}>
+      <div className="min-w-0">
+        <p className="truncate text-sm font-semibold">Secure shell workspace</p>
+        <p className="truncate text-xs text-muted-foreground">
+          Shared theme, shared cache and federated remotes orchestrated in one host.
+        </p>
+      </div>
+
+      <div className="ml-auto flex items-center gap-1.5">
+        <ThemeModeToggle />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-red-600 hover:bg-red-500/10 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300"
+          onClick={handleLogout}
+        >
             <LogOut />
             Logout
-          </Button>
-        </div>
+        </Button>
       </div>
     </header>
   );

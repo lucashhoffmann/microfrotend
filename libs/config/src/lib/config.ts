@@ -12,6 +12,8 @@ export const MOCK_API_PORT = 3333;
 export const API_BASE_URL = `http://localhost:${MOCK_API_PORT}/api`;
 export const AUTH_STORAGE_KEY = 'modular-payments-console.auth';
 export const THEME_STORAGE_KEY = 'modular-payments-console.theme';
+export const THEME_COLOR_STORAGE_KEY =
+  'modular-payments-console.theme-color';
 
 export const AUTH_ROUTES = {
   login: '/auth/login',

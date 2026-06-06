@@ -11,11 +11,6 @@ import {
 } from '@modular-payments-console/auth';
 import {
   Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
   Form,
   FormControl,
   FormField,
@@ -86,28 +81,17 @@ export function LoginView() {
             )}
           />
 
-          <Button className="w-full" disabled={login.isPending} type="submit">
+          <Button className="mt-2 w-full" disabled={login.isPending} type="submit">
             {login.isPending ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>
       </Form>
 
-      <Card className="border-dashed border-border/80 bg-background/70 shadow-none">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Demo credentials</CardTitle>
-          <CardDescription>
-            The form starts prefilled so the shell can be validated immediately.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>
-            <strong>Email:</strong> {DEMO_CREDENTIALS.email}
-          </p>
-          <p>
-            <strong>Password:</strong> {DEMO_CREDENTIALS.password}
-          </p>
-        </CardContent>
-      </Card>
+      <div className="space-y-2 border-t border-border pt-4 text-sm text-muted-foreground">
+        <p className="font-medium text-foreground">Demo credentials</p>
+        <p>{DEMO_CREDENTIALS.email}</p>
+        <p>{DEMO_CREDENTIALS.password}</p>
+      </div>
     </div>
   );
 }
