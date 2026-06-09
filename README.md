@@ -418,7 +418,7 @@ Ela cobre:
 - quando não usar microfrontends
 - fronteiras de ownership entre shell, remotes, auth e event bus
 
-## Pontos para Entrevista
+## Pontos de escolha
 
 - Usei Nx porque o desafio principal aqui não é só organização de código, mas também pipelines isolados, visibilidade do graph e execução `affected` entre shell, remotes e libs compartilhadas.
 - Usei Module Federation porque queria composição em runtime entre host e remotes evoluindo de forma independente, e não apenas um monólito modular organizado por pastas.
