@@ -394,17 +394,6 @@ Depois da geração:
 - Adicionar telemetria de saúde dos remotes e instrumentação de retry
 - Substituir os endpoints mock por uma camada real de integração com backend
 
-## Screenshots
-
-Os espaços reservados para screenshots estão em [docs/screenshots/README.md](./docs/screenshots/README.md).
-
-Capturas sugeridas:
-
-- tela pública de auth
-- shell protegido com um remote carregado
-- project graph
-- remote isolado rodando standalone
-
 ## Notas de Arquitetura
 
 A explicação arquitetural mais longa está em [docs/architecture.md](./docs/architecture.md).
